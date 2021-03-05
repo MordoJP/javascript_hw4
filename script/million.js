@@ -38,9 +38,10 @@ function game(qG, l) {
         else if ((you != (questArr.indexOf(qG.correct) + 1)) && (you > 0) && (you < 5)) {
             alert('проиграл');
             break;
+        } else if (i === l.length-1) {
+            alert('победа');
         }
     }
-    alert('победа!');
 }
 
 function shuffle(arr){
