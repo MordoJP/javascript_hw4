@@ -17,7 +17,6 @@ function selection(g, q, a, k) {
     g.var2 = a[k][1];
     g.var3 = a[k][2];
     g.correct = a[k][3];
-    return g;
 }
 
 game(questGame, questions);
@@ -31,7 +30,7 @@ function game(qG, l) {
         let you = + prompt('Вопрос номер ' + (i + 1) +
             ': \n' + qG.question + '.\n вариант 1: ' + questArr[0] +
             '\n вариант 2: ' + questArr[1] + '\n вариант 3: ' + questArr[2] + '\n вариант 4: ' + questArr[3]);
-        if ((you < 1) || (you > 4)){
+        if ((you < 1) || (you > 4) || (isNaN(you) === true)){
             alert ('вы ввели недопустимое значение');
             break;
         }
