@@ -9,7 +9,8 @@ let questGame = {
     var2: '',
     var3: '',
     correct: ''
-}
+};
+let you;
 
 function selection(g, q, a, k) {
     g.question = q[k];
@@ -27,19 +28,25 @@ function game(qG, l) {
         let questArr = Object.values (qG);
         questArr.shift();
         shuffle (questArr);
-        let you = + prompt('Вопрос номер ' + (i + 1) +
-            ': \n' + qG.question + '.\n вариант 1: ' + questArr[0] +
-            '\n вариант 2: ' + questArr[1] + '\n вариант 3: ' + questArr[2] + '\n вариант 4: ' + questArr[3]);
-        if ((you < 1) || (you > 4) || (isNaN(you) === true)){
-            alert ('вы ввели недопустимое значение');
-            break;
-        }
-        else if ((you != (questArr.indexOf(qG.correct) + 1)) && (you > 0) && (you < 5)) {
+        checking(i, you, qG, questArr);
+        console.log(you, questArr.indexOf(qG.correct));
+        if ((you != (questArr.indexOf(qG.correct) + 1)) && (you > 0) && (you < 5)) {
             alert('проиграл');
             break;
         } else if (i === l.length-1) {
             alert('победа');
         }
+    }
+}
+
+function checking(m, y, q, qA) {
+    y = + prompt('Вопрос номер ' + (m + 1) +
+        ': \n' + q.question + '.\n вариант 1: ' + qA[0] +
+        '\n вариант 2: ' + qA[1] + '\n вариант 3: ' + qA[2] + '\n вариант 4: ' + qA[3]);
+    you = y;
+    if ((y < 1) || (y > 4) || (isNaN(y) === true)){
+        alert ('вы ввели недопустимое значение');
+        checking(m, y, q, qA);
     }
 }
 
